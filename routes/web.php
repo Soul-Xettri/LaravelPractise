@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DemoController;
+use App\Http\Controllers\SingleActionController;
+use App\Http\Controllers\ResourceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,11 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // $data = compact('name');
-    return view('home');
-});
+//BAsic controller Route
+Route::get('/',[DemoController::class,'index']);
+Route::get('/about',[DemoController::class,'about']);
+// Route::get('/about','App\Http\Controllers\DemoController@about'); Laravel 8 method
+// Route::get('/about','DemoController@about'); Laravel 7 method
+// Route::get('/about','DemoController::about'); old Laravel method
 
-Route::get('/about',function(){
-    return view('about');
-});
+//single action controller invokes only 1 action Route
+Route::get('/courses',SingleActionController::class);
+
+//Resource Controller Route
+Route::resource('resource',ResourceController::class);
