@@ -16,18 +16,48 @@
 <body>
     <form action="{{url('/')}}/register" method="post">
         @csrf
+        {{-- <pre>
+        @php
+            print_r($errors->all())
+        @endphp
+        </pre> --}}
 <div class="container">
     <h1 class="text-center">Registration</h1>
-    <div class="mb-3">
+    <div class="form-group">
       <label for="" class="form-label">Name</label>
-      <input type="text" class="form-control" name="name" id="" aria-describedby="nameId" placeholder="Full name">
-      {{-- <small id="nameId" class="form-text text-muted">Help text</small> --}}
+      <input type="text" class="form-control" name="name" id="" aria-describedby="nameId" placeholder="Full name" value="{{old('name')}}">
+      <span class="text-danger">
+        @error('name')
+            {{$message}}
+        @enderror
+      </span>
+    </div>
+    <div class="form-group">
       <label for="" class="form-label">Email</label>
       <input type="email" class="form-control" name="email" id="" aria-describedby="emailId" placeholder="Email">
-      {{-- <small id="emailId" class="form-text text-muted">Help text</small> --}}
+      <span class="text-danger">
+        @error('email')
+        {{$message}}  
+        @enderror
+      </span>
+    </div>
+    <div class="form-group">
       <label for="" class="form-label">Password</label>
       <input type="password" class="form-control" name="password" id="" aria-describedby="passwordId" placeholder="Password">
-      {{-- <small id="PasswordId" class="form-text text-muted">Help text</small> --}}
+      <span class="text-danger">
+        @error('password')
+        {{$message}}     
+        @enderror
+      </span>
+    </div>
+      <div class="form-group">
+      <label for="" class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" name="password_confimation" id="" aria-describedby="confirmPasswordId" placeholder="Confirm Password">
+      <span class="text-danger">
+        @error('confirmPassword')
+        {{$message}}
+        @enderror
+      </span>
     </div>
     <button class="btn btn-primary">
         Submit
