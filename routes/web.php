@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\SingleActionController;
 use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\RegistrationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +28,7 @@ Route::get('/courses',SingleActionController::class);
 
 //Resource Controller Route
 Route::resource('resource',ResourceController::class);
+
+//form
+Route::get('/register',[RegistrationController::class,'index']);
+Route::post('/register',[RegistrationController::class,'register']);
