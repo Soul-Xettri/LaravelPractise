@@ -22,7 +22,6 @@ class Input extends Component
         $this->name=$name;
         $this->label=$label;
         $this->demo=$demo;
-
     }
 
     /**
